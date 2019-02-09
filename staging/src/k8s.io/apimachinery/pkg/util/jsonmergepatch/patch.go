@@ -25,6 +25,11 @@ import (
 	"k8s.io/apimachinery/pkg/util/mergepatch"
 )
 
+func init () {
+	// Disable JSON-patch non-standard negative array indices
+	jsonpatch.SupportNegativeIndices = false
+}
+
 // Create a 3-way merge patch based-on JSON merge patch.
 // Calculate addition-and-change patch between current and modified.
 // Calculate deletion patch between original and modified.

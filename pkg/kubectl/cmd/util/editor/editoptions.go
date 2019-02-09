@@ -81,6 +81,11 @@ type EditOptions struct {
 	updatedResultGetter func(data []byte) *resource.Result
 }
 
+func init () {
+	// Disable JSON-patch non-standard negative array indices
+	jsonpatch.SupportNegativeIndices = false
+}
+
 // NewEditOptions returns an initialized EditOptions instance
 func NewEditOptions(editMode EditMode, ioStreams genericclioptions.IOStreams) *EditOptions {
 	return &EditOptions{

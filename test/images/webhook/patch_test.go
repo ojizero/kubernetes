@@ -26,6 +26,11 @@ import (
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 )
 
+func init () {
+	// Disable JSON-patch non-standard negative array indices
+	jsonpatch.SupportNegativeIndices = false
+}
+
 func TestPatches(t *testing.T) {
 	testCases := []struct {
 		patch    string

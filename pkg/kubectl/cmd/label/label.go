@@ -109,6 +109,11 @@ var (
 		kubectl label pods foo bar-`))
 )
 
+func init () {
+	// Disable JSON-patch non-standard negative array indices
+	jsonpatch.SupportNegativeIndices = false
+}
+
 func NewLabelOptions(ioStreams genericclioptions.IOStreams) *LabelOptions {
 	return &LabelOptions{
 		RecordFlags: genericclioptions.NewRecordFlags(),

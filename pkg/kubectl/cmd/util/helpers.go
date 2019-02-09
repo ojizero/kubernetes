@@ -55,6 +55,11 @@ type debugError interface {
 	DebugError() (msg string, args []interface{})
 }
 
+func init () {
+	// Disable JSON-patch non-standard negative array indices
+	jsonpatch.SupportNegativeIndices = false
+}
+
 // AddSourceToErr adds handleResourcePrefix and source string to error message.
 // verb is the string like "creating", "deleting" etc.
 // source is the filename or URL to the template file(*.json or *.yaml), or stdin to use to handle the resource.

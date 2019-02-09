@@ -249,6 +249,11 @@ type AuthorizationInfo struct {
 	Authorizer authorizer.Authorizer
 }
 
+func init () {
+	// Disable JSON-patch non-standard negative array indices
+	jsonpatch.SupportNegativeIndices = false
+}
+
 // NewConfig returns a Config struct with the default values
 func NewConfig(codecs serializer.CodecFactory) *Config {
 	return &Config{

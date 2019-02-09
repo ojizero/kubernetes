@@ -53,6 +53,11 @@ var (
 	keyFunc = cache.DeletionHandlingMetaNamespaceKeyFunc
 )
 
+func init () {
+	// Disable JSON-patch non-standard negative array indices
+	jsonpatch.SupportNegativeIndices = false
+}
+
 // FakeNodeHandler is a fake implementation of NodesInterface and NodeInterface. It
 // allows test cases to have fine-grained control over mock behaviors. We also need
 // PodsInterface and PodInterface to test list & delete pods, which is implemented in

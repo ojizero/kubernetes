@@ -70,6 +70,11 @@ type ObjectScheme interface {
 	runtime.ObjectTyper
 }
 
+func init () {
+	// Disable JSON-patch non-standard negative array indices
+	jsonpatch.SupportNegativeIndices = false
+}
+
 // ObjectReaction returns a ReactionFunc that applies core.Action to
 // the given tracker.
 func ObjectReaction(tracker ObjectTracker) ReactionFunc {

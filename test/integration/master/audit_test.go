@@ -39,6 +39,11 @@ import (
 	"github.com/evanphx/json-patch"
 )
 
+func init () {
+	// Disable JSON-patch non-standard negative array indices
+	jsonpatch.SupportNegativeIndices = false
+}
+
 var (
 	auditPolicyPattern = `
 apiVersion: {version}

@@ -47,6 +47,11 @@ type mutatingDispatcher struct {
 	plugin *Plugin
 }
 
+func init () {
+	// Disable JSON-patch non-standard negative array indices
+	jsonpatch.SupportNegativeIndices = false
+}
+
 func newMutatingDispatcher(p *Plugin) func(cm *webhook.ClientManager) generic.Dispatcher {
 	return func(cm *webhook.ClientManager) generic.Dispatcher {
 		return &mutatingDispatcher{cm, p}

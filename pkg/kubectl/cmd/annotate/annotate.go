@@ -108,6 +108,11 @@ var (
     kubectl annotate pods foo description-`))
 )
 
+func init () {
+	// Disable JSON-patch non-standard negative array indices
+	jsonpatch.SupportNegativeIndices = false
+}
+
 // NewAnnotateOptions creates the options for annotate
 func NewAnnotateOptions(ioStreams genericclioptions.IOStreams) *AnnotateOptions {
 	return &AnnotateOptions{

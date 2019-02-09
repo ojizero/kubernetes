@@ -41,6 +41,11 @@ type RecordFlags struct {
 	changeCause string
 }
 
+func init () {
+	// Disable JSON-patch non-standard negative array indices
+	jsonpatch.SupportNegativeIndices = false
+}
+
 // ToRecorder returns a ChangeCause recorder if --record=false was not
 // explicitly given by the user
 func (f *RecordFlags) ToRecorder() (Recorder, error) {

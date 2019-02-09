@@ -722,6 +722,11 @@ var _ = SIGDescribe("Advanced Audit [DisabledForLargeClusters]", func() {
 
 })
 
+func init () {
+	// Disable JSON-patch non-standard negative array indices
+	jsonpatch.SupportNegativeIndices = false
+}
+
 func expectEvents(f *framework.Framework, expectedEvents []utils.AuditEvent) {
 	// The default flush timeout is 30 seconds, therefore it should be enough to retry once
 	// to find all expected events. However, we're waiting for 5 minutes to avoid flakes.
